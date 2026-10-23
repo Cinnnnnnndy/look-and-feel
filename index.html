@@ -2,8 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Look &amp; Feel</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -16,15 +17,14 @@
           <div class="brand-sub" id="stat-count">设计素材库</div>
         </div>
       </div>
-      <nav class="nav" id="nav">
-        <button class="nav-item active" data-view="entries">素材条目</button>
-        <button class="nav-item" data-view="tags">标签</button>
-        <a class="nav-item" id="nav-summary" target="_blank" rel="noopener">归纳总览</a>
-        <a class="nav-item" id="nav-template" target="_blank" rel="noopener">条目模板</a>
+      <div class="side-label">产品场景</div>
+      <nav class="scene-nav" id="scene-nav" aria-label="产品场景"></nav>
+      <div class="side-label">资料</div>
+      <nav class="nav">
+        <a class="nav-item" id="nav-summary" target="_blank" rel="noopener">归纳总览 ↗</a>
+        <a class="nav-item" id="nav-template" target="_blank" rel="noopener">条目模板 ↗</a>
+        <a class="nav-item" id="nav-repo" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
       </nav>
-      <div class="sidebar-foot">
-        <a id="nav-repo" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
-      </div>
     </aside>
 
     <main class="main">
@@ -33,37 +33,13 @@
         <p>收集好设计，拆解视觉要点与交互设计点，沉淀为可复用的规律。</p>
       </header>
 
-      <section class="actions">
-        <a class="action" id="act-new" target="_blank" rel="noopener">
-          <span class="action-icon">＋</span>
-          <span class="action-title">新增条目</span>
-          <span class="action-desc">从模板开始一条新分析</span>
-        </a>
-        <a class="action" id="act-summary" target="_blank" rel="noopener">
-          <span class="action-icon">≡</span>
-          <span class="action-title">查看归纳</span>
-          <span class="action-desc">跨条目的视觉与交互规律</span>
-        </a>
-        <a class="action" id="act-repo" target="_blank" rel="noopener">
-          <span class="action-icon">⌂</span>
-          <span class="action-title">打开仓库</span>
-          <span class="action-desc">浏览全部素材与历史</span>
-        </a>
-      </section>
+      <div class="toolbar">
+        <div class="scene-tabs" id="scene-tabs" role="tablist" aria-label="按产品场景筛选"></div>
+        <input id="search" class="search" type="search" placeholder="搜索产品名、主题、标签…">
+      </div>
+      <div id="tag-filter" class="tag-filter" hidden></div>
 
-      <section class="panel" id="view-entries">
-        <div class="panel-head">
-          <h2>最近收录</h2>
-          <input id="search" class="search" type="search" placeholder="搜索产品名、主题、标签…">
-        </div>
-        <div id="tag-filter" class="tag-filter" hidden></div>
-        <ul id="list" class="list"></ul>
-      </section>
-
-      <section class="panel" id="view-tags" hidden>
-        <div class="panel-head"><h2>标签</h2></div>
-        <div id="tag-cloud" class="tag-cloud"></div>
-      </section>
+      <section id="grid" class="grid" aria-live="polite"></section>
     </main>
   </div>
 
@@ -71,12 +47,15 @@
   <script>
     (function () {
       var cfg = window.LF_CONFIG || {};
-      var entries = (window.LF_ENTRIES || []).slice().sort(function (a, b) {
-        return (b.date || "").localeCompare(a.date || "");
-      });
-      var blob = cfg.repo + "/blob/" + cfg.branch + "/";
+      var OTHER = "其他";
+      var defined = window.LF_SCENES || [];
+      var entries = (window.LF_ENTRIES || []).map(function (e) {
+        var s = defined.indexOf(e.scene) >= 0 ? e.scene : OTHER;
+        return Object.assign({}, e, { scene: s });
+      }).sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
       var tree = cfg.repo + "/tree/" + cfg.branch + "/";
-      var activeTag = null;
+      var blob = cfg.repo + "/blob/" + cfg.branch + "/";
+      var state = { scene: "全部", tag: null };
 
       function $(id) { return document.getElementById(id); }
       function esc(s) {
@@ -84,89 +63,86 @@
           return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
         });
       }
+      // 每个场景一个固定色相，用于封面占位和场景标记
+      function hue(scene) {
+        var i = defined.indexOf(scene);
+        return i < 0 ? 220 : (215 + i * 47) % 360;
+      }
 
-      $("nav-summary").href = $("act-summary").href = blob + "SUMMARY.md";
-      $("nav-template").href = $("act-new").href = blob + "entries/_template.md";
-      $("nav-repo").href = $("act-repo").href = cfg.repo;
+      $("nav-summary").href = blob + "SUMMARY.md";
+      $("nav-template").href = blob + "entries/_template.md";
+      $("nav-repo").href = cfg.repo;
       $("stat-count").textContent = "已收录 " + entries.length + " 条";
 
+      var count = {};
+      entries.forEach(function (e) { count[e.scene] = (count[e.scene] || 0) + 1; });
+      var scenes = ["全部"].concat(defined.concat([OTHER]).filter(function (s) { return count[s]; }));
+      count["全部"] = entries.length;
+
+      function renderScenes() {
+        var html = scenes.map(function (s) {
+          var on = s === state.scene;
+          return '<button role="tab" aria-selected="' + on + '" class="scene' + (on ? " on" : "") +
+            '" data-scene="' + esc(s) + '" style="--h:' + hue(s) + '">' +
+            (s === "全部" ? "" : '<i class="dot"></i>') + esc(s) +
+            '<span class="n">' + count[s] + "</span></button>";
+        }).join("");
+        $("scene-tabs").innerHTML = html;
+        $("scene-nav").innerHTML = html.replace(/role="tab" /g, "");
+      }
+
+      function card(e) {
+        var cover = e.cover
+          ? '<img class="cover" loading="lazy" src="' + esc(e.cover) + '" alt="">'
+          : '<div class="cover cover-ph" aria-hidden="true">' + esc((e.product || "?").slice(0, 1)) + "</div>";
+        var tags = (e.tags || []).map(function (t) {
+          return '<button class="tag" data-tag="' + esc(t) + '">' + esc(t) + "</button>";
+        }).join("");
+        return '<article class="card" style="--h:' + hue(e.scene) + '">' + cover +
+          '<div class="card-body">' +
+            '<div class="card-scene"><i class="dot"></i>' + esc(e.scene) + "</div>" +
+            '<h3><a class="card-link" target="_blank" rel="noopener" href="' + esc(tree + e.path) + '">' + esc(e.product) + "</a></h3>" +
+            (e.title ? '<p class="card-title">' + esc(e.title) + "</p>" : "") +
+            (e.summary ? '<p class="card-summary">' + esc(e.summary) + "</p>" : "") +
+            '<div class="tags">' + tags + "</div>" +
+            '<div class="card-meta"><span>' + esc(e.date) + "</span>" +
+              (e.platform ? "<span>" + esc(e.platform) + "</span>" : "") +
+              (e.link ? '<a class="raw" target="_blank" rel="noopener" href="' + esc(e.link) + '">原链接 ↗</a>' : "") +
+            "</div>" +
+          "</div></article>";
+      }
+
       function render() {
+        renderScenes();
         var q = $("search").value.trim().toLowerCase();
         var shown = entries.filter(function (e) {
-          if (activeTag && (e.tags || []).indexOf(activeTag) < 0) return false;
+          if (state.scene !== "全部" && e.scene !== state.scene) return false;
+          if (state.tag && (e.tags || []).indexOf(state.tag) < 0) return false;
           if (!q) return true;
-          return [e.product, e.title, e.platform, (e.tags || []).join(" ")]
+          return [e.product, e.title, e.summary, e.scene, e.platform, (e.tags || []).join(" ")]
             .join(" ").toLowerCase().indexOf(q) >= 0;
         });
 
         var tf = $("tag-filter");
-        tf.hidden = !activeTag;
-        tf.innerHTML = activeTag
-          ? '筛选标签：<span class="tag">' + esc(activeTag) + '</span> <button id="clear-tag">清除</button>'
+        tf.hidden = !state.tag;
+        tf.innerHTML = state.tag
+          ? '标签：<span class="tag">' + esc(state.tag) + '</span><button class="clear" data-clear>清除</button>'
           : "";
-        if (activeTag) $("clear-tag").onclick = function () { activeTag = null; render(); };
 
-        if (!shown.length) {
-          $("list").innerHTML = '<li class="empty">' +
-            (entries.length ? "没有匹配的条目" : "还没有收录任何素材。发来第一份设计素材吧。") + "</li>";
-          return;
-        }
-        $("list").innerHTML = shown.map(function (e) {
-          var cover = e.cover
-            ? '<img class="thumb" loading="lazy" src="' + esc(e.cover) + '" alt="">'
-            : '<div class="thumb thumb-ph">' + esc((e.product || "?").slice(0, 1)) + "</div>";
-          var tags = (e.tags || []).map(function (t) {
-            return '<button class="tag" data-tag="' + esc(t) + '">' + esc(t) + "</button>";
-          }).join("");
-          return '<li class="item">' + cover +
-            '<div class="item-body">' +
-              '<a class="item-title" target="_blank" rel="noopener" href="' + esc(tree + e.path) + '">' +
-                esc(e.product) + (e.title ? '<span class="item-sub"> · ' + esc(e.title) + "</span>" : "") +
-              "</a>" +
-              '<div class="item-meta">' +
-                '<span>' + esc(e.date) + "</span>" +
-                (e.platform ? "<span>" + esc(e.platform) + "</span>" : "") +
-                (e.link ? '<a target="_blank" rel="noopener" href="' + esc(e.link) + '">原链接 ↗</a>' : "") +
-              "</div>" +
-              '<div class="tags">' + tags + "</div>" +
-            "</div></li>";
-        }).join("");
+        $("grid").innerHTML = shown.length ? shown.map(card).join("") :
+          '<p class="empty">' + (entries.length ? "没有匹配的条目" : "还没有收录任何素材。发来第一份设计素材吧。") + "</p>";
       }
 
-      function renderTags() {
-        var count = {};
-        entries.forEach(function (e) { (e.tags || []).forEach(function (t) { count[t] = (count[t] || 0) + 1; }); });
-        var keys = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; });
-        $("tag-cloud").innerHTML = keys.length
-          ? keys.map(function (t) {
-              return '<button class="tag" data-tag="' + esc(t) + '">' + esc(t) + " <b>" + count[t] + "</b></button>";
-            }).join("")
-          : '<p class="empty">暂无标签</p>';
-      }
-
-      function show(view) {
-        document.querySelectorAll(".nav-item[data-view]").forEach(function (b) {
-          b.classList.toggle("active", b.dataset.view === view);
-        });
-        $("view-entries").hidden = view !== "entries";
-        $("view-tags").hidden = view !== "tags";
-      }
-
-      $("nav").addEventListener("click", function (ev) {
-        var v = ev.target.dataset && ev.target.dataset.view;
-        if (v) show(v);
-      });
       document.addEventListener("click", function (ev) {
-        var t = ev.target.closest && ev.target.closest("[data-tag]");
-        if (!t) return;
-        activeTag = t.dataset.tag;
-        show("entries");
+        var el = ev.target.closest && ev.target.closest("[data-scene],[data-tag],[data-clear]");
+        if (!el) return;
+        if (el.dataset.scene) state.scene = el.dataset.scene;
+        else if (el.dataset.tag) state.tag = el.dataset.tag;
+        else state.tag = null;
         render();
       });
       $("search").addEventListener("input", render);
-
       render();
-      renderTags();
     })();
   </script>
 </body>

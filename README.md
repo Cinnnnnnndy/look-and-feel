@@ -10,7 +10,7 @@
 
 ```
 look-and-feel/
-├── index.html            # 启动页（DevEco 风格欢迎页）
+├── index.html            # 启动页：每条分析一张卡片，按产品场景分类
 ├── assets/style.css      # 启动页样式
 ├── data/entries.js       # 条目索引（启动页数据源）
 ├── SUMMARY.md            # 跨条目归纳：视觉 / 交互 规律
@@ -31,12 +31,13 @@ look-and-feel/
 | 产品名 | 产品 / 应用 / 网站名称 |
 | 链接 | 原始链接（官网、应用商店、帖子等） |
 | 收录时间 | 收录当天日期，格式 `YYYY-MM-DD` |
+| 产品场景 | 启动页分类依据，如协作白板、设计工具、开发工具、办公文档 |
 
 ## 新增一条的流程
 
 1. 复制 `entries/_template.md` 到 `entries/<年>/<日期>-<产品名>/README.md`，截图放在同目录。
 2. 填写视觉要点、交互设计点、可借鉴之处。
-3. 在 `data/entries.js` 顶部追加一条索引（启动页即刻可见）。
+3. 在 `data/entries.js` 顶部追加一条索引（启动页即刻可见），`scene` 填产品场景（见 `LF_SCENES`，可增补）。
 4. 若出现新的共性规律，更新 `SUMMARY.md`。
 5. 提交并 push。
 
