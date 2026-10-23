@@ -77,6 +77,19 @@ Org 组织
 - **快捷操作**：Ctrl/⌘ + E 全局搜索；hover 卡片时点星标即可收藏；卡片的 “…” 菜单集中了分享、重命名、复制、移动到 Space、删除、下载备份、复制链接等操作。
 - **导航演进（重点）**：2024 年 9 月，Miro 上线了 Spaces 侧边栏和简化版 UI。2025 年 6 月起，选中某个 Space 后整个侧边栏会替换成该 Space 的看板，进入看板后侧边栏自动收起。
 
+## 演变时间线
+
+| 时间 | 变化 | 类型 | 影响 |
+| --- | --- | --- | --- |
+| 早期（2024 年前） | 仪表盘以**缩略图网格**为主，Recent 页列出最近的看板 | 交互 / 视觉 | 靠缩略图视觉识别，找旧看板很直观 |
+| 2023-09 | 品牌重塑（AKQA）：Logo “M” 放大、方块切角柔化；Hero Yellow 收敛使用；新增奶油、Lime、Lilac 辅助色；插画改为粗描边风格 | 视觉（品牌） | 品牌层更克制、更有辨识度 |
+| 2024 | 发布产品设计语言 **Aura**：正文改用 Noto Sans，重绘图标和看板缩略图，调色板提升对比度，便签加入触感细节 | 视觉（产品） | 品牌和产品两套体系对齐 |
+| 2024-09 | 上线 **Spaces 侧边栏 + Simplified UI**。侧边栏曾在看板内默认展开，后来撤回 | 交互 / IA | 引入 Space 这一层，导航从网格转向侧边栏列表 |
+| 2025 前后 | **Home 取代 Recent**，加入 AI 变化概览（具体时间未查到官方说明） | 交互 | 从“最近列表”变成“相关内容 + 摘要” |
+| 2025-06 中 | 选中 Space 后整个侧边栏替换为该 Space 内容；进入看板后侧边栏自动收起（不同套餐表现不同） | 交互 | 社区反馈导航不稳定，用户要求恢复缩略图视图 |
+
+**演变规律**：视觉上从“品牌外显”走向“品牌克制、内容优先”；交互上从“平铺的缩略图网格”走向“分层的侧边栏 IA + AI 摘要”。层级更清楚了，代价是视觉识别能力和导航稳定性下降。时间点来自官方博客、帮助中心和社区帖，其中社区帖的说法出自志愿版主，不一定是官方口径。
+
 ## 可借鉴 / 待商榷
 
 - ✅ 可借鉴：用一个 “+ Create” 收拢所有新建入口（看板、Space、模板），入口很清晰。
@@ -92,6 +105,7 @@ Org 组织
 - Miro 社区：[Bring back the old visual board overview as an optional view](https://community.miro.com/ideas/bring-back-the-old-visual-board-overview-as-an-optional-view-28817)
 - Miro 博客：[Introducing Aura: Miro’s Product Design Language](https://miro.com/blog/introducing-aura/)
 - Miro 博客：[Miro 新视觉识别系统（2023）](https://miro.com/blog/miro-vis/)
+- Its Nice That：[AKQA × Miro 品牌重塑](https://itsnicethat.com/news/akqa-miro-graphic-design-050923)
 - 第三方整理：[Miro design system tokens（open-design.ai）](https://open-design.ai/plugins/design-system-miro/)
 - Miro 社区：[New navigation is not user friendly](https://community.miro.com/developer-platform-and-apis-57/new-navigation-is-not-user-friend-24317)
 
