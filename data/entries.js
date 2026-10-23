@@ -6,6 +6,15 @@ window.LF_CONFIG = {
 };
 
 window.LF_ENTRIES = [
+  {
+    product: "Miro",
+    title: "团队仪表盘：侧边栏导航 + 网格/列表看板",
+    link: "https://miro.com/app/dashboard/org/3458764687781253932/team/3458764687781253937/",
+    date: "2026-10-23",
+    platform: "Web",
+    tags: ["仪表盘", "信息架构", "侧边栏", "列表/网格"],
+    path: "entries/2026/2026-10-23-Miro",
+  },
   // {
   //   product: "产品名",
   //   title: "一句话主题",
