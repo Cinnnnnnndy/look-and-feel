@@ -18,9 +18,22 @@ window.LF_SCENES = [
   "系统与OS",
   "SaaS 仪表盘",
   "健康医疗",
+  "官网落地页",
 ];
 
 window.LF_ENTRIES = [
+  {
+    product: "WayPilot",
+    scene: "官网落地页",
+    summary: "白底点阵 + 紫黄柔光；粗无衬线配斜体衬线强调词，Logo 嵌进标题当字母，叙事段落随滚动逐词点亮。",
+    title: "AI 金融 SaaS 官网：编辑感混排标题 + 滚动高亮叙事 + AI 输入框演示",
+    link: "https://dribbble.com/shots/27829394-AI-FinTech-SaaS-Website-UI-UX-Design",
+    date: "2026-10-26",
+    platform: "Web / 移动端",
+    tags: ["官网", "Hero", "字体混排", "行内图标", "渐变光晕", "滚动动效", "响应式", "Dribbble 概念稿"],
+    path: "entries/2026/2026-10-26-WayPilot",
+    cover: "entries/2026/2026-10-26-WayPilot/01.png",
+  },
   {
     product: "Cardeva",
     scene: "健康医疗",
