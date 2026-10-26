@@ -17,9 +17,22 @@ window.LF_SCENES = [
   "出行生活",
   "系统与OS",
   "SaaS 仪表盘",
+  "健康医疗",
 ];
 
 window.LF_ENTRIES = [
+  {
+    product: "Cardeva",
+    scene: "健康医疗",
+    summary: "纯黑白灰；黑白人体摄影上用引线标注数据，唯一一张深色卡片做焦点，底部时间轴拖选查看当天数据。",
+    title: "心血管健康仪表盘：人体标注 + 时间轴 + Bento 指标卡",
+    link: "",
+    date: "2026-10-26",
+    platform: "Web",
+    tags: ["仪表盘", "健康数据", "单色", "人体标注", "时间轴", "Dribbble 概念稿"],
+    path: "entries/2026/2026-10-26-Cardeva",
+    cover: "entries/2026/2026-10-26-Cardeva/01.png",
+  },
   {
     product: "FLOX",
     scene: "SaaS 仪表盘",
