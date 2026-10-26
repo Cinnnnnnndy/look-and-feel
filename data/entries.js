@@ -16,9 +16,22 @@ window.LF_SCENES = [
   "电商消费",
   "出行生活",
   "系统与OS",
+  "SaaS 仪表盘",
 ];
 
 window.LF_ENTRIES = [
+  {
+    product: "FLOX",
+    scene: "SaaS 仪表盘",
+    summary: "浅灰底 + 近白大圆角 Bento 卡片；全页只让一根紫色渐变柱和 tooltip 抢焦点，先给结论数字再给图。",
+    title: "自由职业者管理仪表盘：收入、项目、任务一屏总览",
+    link: "https://dribbble.com/shots/27794184-Freelancer-Management-Dashboard-FLOX",
+    date: "2026-10-26",
+    platform: "Web",
+    tags: ["仪表盘", "Bento 卡片", "数据可视化", "状态标签", "Dribbble 概念稿"],
+    path: "entries/2026/2026-10-26-FLOX",
+    cover: "entries/2026/2026-10-26-FLOX/01.png",
+  },
   {
     product: "Miro",
     scene: "协作白板",
