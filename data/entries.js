@@ -23,6 +23,18 @@ window.LF_SCENES = [
 
 window.LF_ENTRIES = [
   {
+    product: "heypcb",
+    scene: "开发工具",
+    summary: "白色极简外壳 + 原汁原味的 KiCad 淡黄图纸；左侧 AI 对话先出计划再改板，空状态同时教「问 Inky」和按 A / W 手动画。",
+    title: "AI PCB 编辑器：对话面板 + KiCad 图纸画布 + 先计划后批准的 Agent",
+    link: "https://heypcb.ai/",
+    date: "2026-10-27",
+    platform: "Web",
+    tags: ["AI Agent", "专业编辑器", "画布", "空状态", "视图切换", "浮动工具栏", "快捷键", "付费墙"],
+    path: "entries/2026/2026-10-27-heypcb",
+    cover: "entries/2026/2026-10-27-heypcb/01.png",
+  },
+  {
     product: "WayPilot",
     scene: "官网落地页",
     summary: "白底点阵 + 紫黄柔光；粗无衬线配斜体衬线强调词，Logo 嵌进标题当字母，叙事段落随滚动逐词点亮。",
