@@ -5,6 +5,7 @@
 - 🚀 启动页：[`index.html`](./index.html)（开启 GitHub Pages 后可在线浏览）
 - 📚 归纳总览：[`SUMMARY.md`](./SUMMARY.md)
 - 📝 条目模板：[`entries/_template.md`](./entries/_template.md)
+- 🧭 积累经验与收录流程：[`docs/积累经验.md`](./docs/积累经验.md)
 
 ## 目录结构
 
@@ -14,6 +15,7 @@ look-and-feel/
 ├── assets/style.css      # 启动页样式
 ├── data/entries.js       # 条目索引（启动页数据源）
 ├── SUMMARY.md            # 跨条目归纳：视觉 / 交互 规律
+├── docs/积累经验.md       # 积累经验与完整收录流程
 └── entries/
     ├── _template.md      # 新条目模板
     └── 2026/
@@ -34,6 +36,8 @@ look-and-feel/
 | 产品场景 | 启动页分类依据，如协作白板、设计工具、开发工具、办公文档 |
 
 ## 新增一条的流程
+
+完整步骤和写作要求见 [积累经验与收录流程](./docs/积累经验.md)。简版如下：
 
 1. 复制 `entries/_template.md` 到 `entries/<年>/<日期>-<产品名>/README.md`，截图放在同目录。
 2. 填写视觉要点、交互设计点、可借鉴之处。
