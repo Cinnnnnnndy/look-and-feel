@@ -8,6 +8,7 @@ window.LF_CONFIG = {
 
 // 产品场景分类，顺序即启动页上的显示顺序。需要新场景时直接加在这里。
 window.LF_SCENES = [
+  "品牌与营销传播",
   "工作流自动化",
   "协作白板",
   "设计工具",
@@ -23,6 +24,24 @@ window.LF_SCENES = [
 ];
 
 window.LF_ENTRIES = [
+  {
+  "product": "Stormlikes",
+  "scene": "品牌与营销传播",
+  "title": "云朵角色 + 窄体大字：跨媒介品牌视觉系统",
+  "summary": "紫粉色块、黑白云朵线稿和窄体标题贯穿网页、服装与广告；购买组件收敛为浅底、深色选中态和明确 CTA。",
+  "link": "https://dribbble.com/shots/27422066-Stormlikes-Bento-Identity-Campaign-Visual-System",
+  "date": "2026-10-29",
+  "platform": "Web / 社交 / 户外 / 服装展示",
+  "tags": [
+    "品牌系统",
+    "Bento 展示",
+    "2D 吉祥物",
+    "窄体标题",
+    "跨媒介"
+  ],
+  "path": "entries/2026/2026-10-29-Stormlikes",
+  "cover": "entries/2026/2026-10-29-Stormlikes/01.png"
+},
   {
   "product": "Nyuman",
   "scene": "工作流自动化",

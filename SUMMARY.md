@@ -1,7 +1,7 @@
 # 归纳总览
 
 > 随条目积累持续更新。每条规律后注明出处条目，便于回溯。
-> 最近更新：2026-10-29 · 已收录 6 条
+> 最近更新：2026-10-29 · 已收录 7 条
 
 ## 视觉要点
 
@@ -22,6 +22,7 @@
 - **外壳去色，把颜色留给产出物**：白底 + 浅灰描边 + 近黑 `#17171A` 主按钮，全屏唯一的彩色是 AI“执行”芯片的淡紫；画布保留 KiCad 原生的淡黄 `#FFFFE5` 和深蓝图框 `#414490`，让用户一眼认出“这是真的工程图纸”。——[heypcb](entries/2026/2026-10-27-heypcb/README.md)
 
 ### 字体与信息层级
+- **宽粗字标与窄体大写分工**：字标提供横向品牌锚点，促销短标题靠纵向拉伸感放大；功能正文保持正常字宽。字体家族待确认。——[Stormlikes](entries/2026/2026-10-29-Stormlikes/README.md)
 - **双字体分工**：品牌字体（Roobert）负责标题和个性，开源的全语种字体（Noto Sans）负责正文，兼顾风格与多语言。——[Miro](entries/2026/2026-10-23-Miro/README.md)
 - **工具型界面的层级主要靠颜色深浅 + 位置**，字号差很小，几乎不用分割线。——[Miro](entries/2026/2026-10-23-Miro/README.md)
 - **只用两档字重（400 / 500）时，靠字号跨度撑层级**：36–48px 的标题和结论数字 vs. 12px 元信息，跨度约 4 倍，画面轻但层级清楚；注意浅灰小字的对比度。——[FLOX](entries/2026/2026-10-26-FLOX/README.md)
@@ -32,6 +33,7 @@
 - **三种字体 = 三种身份**：无衬线是界面，等宽体是会变化的工程数值和状态（`1.270 mm`、`3.3×`、坐标、Saved），图纸字体是产出物本身。——[heypcb](entries/2026/2026-10-27-heypcb/README.md)
 
 ### 图标、插画与质感
+- **跨媒介保留角色、描边、色块，改变动作与裁切**：云朵角色贯穿网页、服装、户外和社交海报。展示图的 Bento 是陈列容器，不代表产品信息架构。——[Stormlikes](entries/2026/2026-10-29-Stormlikes/README.md)
 - **角色家族用轮廓、颜色、道具共同区分职责**：短绒材质统一，四种不同轮廓避免只靠颜色识别；品牌展示的高纹理环境围绕低彩度操作画布。——[Nyuman](entries/2026/2026-10-29-Nyuman/README.md)
 - **用 1px 描边环代替投影**，营造扁平、干净的工具感；个性交给内容物件（便签纹理、贴纸）来表达。——[Miro](entries/2026/2026-10-23-Miro/README.md)
 - **用明度分层代替描边**：灰底 → 近白卡片 → 白色胶囊控件 → 深色 tooltip，四层只靠明度和极淡阴影区分。和 Miro 的“描边环”是两种扁平化思路。——[FLOX](entries/2026/2026-10-26-FLOX/README.md)
@@ -52,6 +54,7 @@
 - **多团队场景下，团队切换器支持置顶和拖拽排序**。——[Miro](entries/2026/2026-10-23-Miro/README.md)
 
 ### 反馈与状态（加载 / 空 / 错误）
+- **选择、结果、提交分区**：数量卡深色选中，总价集中右侧，CTA 重复当前数量；静态图呈现核对线索，未验证价格联动或提交行为。——[Stormlikes](entries/2026/2026-10-29-Stormlikes/README.md)
 - **品牌角色延续到帮助入口**：展示图中的黄色角色在屏内右下角帮助气泡旁复现，建立视觉连续性；仅确认入口呈现，未验证点击、AI 能力或状态反馈。——[Nyuman](entries/2026/2026-10-29-Nyuman/README.md)
 - **图表选中态 = 变色 + 变宽 + 深色 tooltip**，tooltip 带小三角指向数据点，默认选中一项保证首屏有焦点。——[FLOX](entries/2026/2026-10-26-FLOX/README.md)
 - **时间轴拖选（scrubber）**：横向刻度尺 + 深色可拖动选区（两端有把手）+ “Now” 小标签 + 右端截断刻度，一条控件同时表达“选中范围”“当前时刻”和“还能滚动”。——[Cardeva](entries/2026/2026-10-26-Cardeva/README.md)
@@ -98,6 +101,9 @@
 
 **Nyuman**（[Nyuman](entries/2026/2026-10-29-Nyuman/README.md)）
 - 2026-10-29 首次收录品牌角色与流程界面的组合展示。作者提及 Yoom → Nyuman 转型，时间未注明、无旧版截图；当前作为视觉基线。
+
+**Stormlikes**（[Stormlikes](entries/2026/2026-10-29-Stormlikes/README.md)）
+- 2026-10-29 首次收录跨媒介品牌展示；暂无历史版本。当前比较的是同一系统的媒介适配，而非时间演变。
 
 ### 跨产品对比
 > 同一类问题在不同产品里的解法。收录 ≥2 个同类产品后填写。
@@ -153,6 +159,14 @@
 | 品牌叙事 | 毛绒角色、办公道具和实体空间 | WayPilot 字体混排、柔光和输入框演示 | 角色承担识别，官网排版承担阅读与转化；证据形态不同 |
 | 3D 材质 | 围绕整个屏幕的空间环境 | FLOX 局部推广卡质感 | 高纹理可用于品牌传播，工作区仍需保持可读 |
 
+**Stormlikes 的品牌与布局对比**（[Stormlikes](entries/2026/2026-10-29-Stormlikes/README.md)）：
+
+| 对象 | 比较维度 | 差异 |
+| --- | --- | --- |
+| Nyuman | 角色系统 | 四种 3D 毛绒轮廓与道具分工，对照同一 2D 云朵角色的动作与媒介变体 |
+| FLOX | Bento 用途 | FLOX 是产品数据布局，Stormlikes 是案例展示拼贴，不能直接推导同样的交互 |
+| WayPilot | 字体与氛围 | 无衬线/衬线混排、柔光，对照宽粗字标/窄体大写、硬色块与粗线 |
+
 ### 行业趋势观察
 - **AI 摘要进入首页**：Miro Home 用 AI 变化概览部分替代了“最近列表”。需要观察这种做法能否取代快速定位。——[Miro](entries/2026/2026-10-23-Miro/README.md)
 - **仪表盘从“表格驱动”转向“结论驱动”**：首屏先给一句结论（+32% / AI 变化概览），图表和列表退居佐证。Miro 用 AI 摘要，FLOX 用大号结论数字，方向一致。——[Miro](entries/2026/2026-10-23-Miro/README.md)、[FLOX](entries/2026/2026-10-26-FLOX/README.md)
@@ -165,6 +179,7 @@
 
 | 收录时间 | 产品名 | 主题 | 链接 | 分析 |
 | --- | --- | --- | --- | --- |
+| 2026-10-29 | Stormlikes | 云朵角色、窄体标题与跨媒介品牌系统 | [Dribbble](https://dribbble.com/shots/27422066-Stormlikes-Bento-Identity-Campaign-Visual-System) | [分析](entries/2026/2026-10-29-Stormlikes/README.md) |
 | 2026-10-29 | Nyuman | 毛绒数字同事与工作流画布的品牌连接 | [Dribbble](https://dribbble.com/shots/27839057-Nyuman-3D-Character-Design-Digital-Workspaces) | [分析](entries/2026/2026-10-29-Nyuman/README.md) |
 | 2026-10-27 | heypcb | AI PCB 编辑器：对话面板 + KiCad 图纸画布 + 先计划后批准的 Agent | [官网](https://heypcb.ai/) · [竞品报告](https://cinnnnnnndy.github.io/BMC/heypcb-analysis/report.html) | [分析](entries/2026/2026-10-27-heypcb/README.md) |
 | 2026-10-26 | WayPilot | AI 金融 SaaS 官网：编辑感混排标题 + 滚动高亮叙事 + AI 输入框演示 | [Dribbble](https://dribbble.com/shots/27829394-AI-FinTech-SaaS-Website-UI-UX-Design) | [分析](entries/2026/2026-10-26-WayPilot/README.md) |
