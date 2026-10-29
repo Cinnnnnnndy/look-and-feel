@@ -8,6 +8,7 @@ window.LF_CONFIG = {
 
 // 产品场景分类，顺序即启动页上的显示顺序。需要新场景时直接加在这里。
 window.LF_SCENES = [
+  "工作流自动化",
   "协作白板",
   "设计工具",
   "开发工具",
@@ -22,6 +23,24 @@ window.LF_SCENES = [
 ];
 
 window.LF_ENTRIES = [
+  {
+  "product": "Nyuman",
+  "scene": "工作流自动化",
+  "title": "毛绒数字同事：3D 工作空间与画布帮助入口",
+  "summary": "四种毛绒轮廓围绕白色流程画布，黄色角色在屏内帮助入口复现；以颜色、轮廓和道具区分职责。",
+  "link": "https://dribbble.com/shots/27839057-Nyuman-3D-Character-Design-Digital-Workspaces",
+  "date": "2026-10-29",
+  "platform": "Web（品牌展示图）",
+  "tags": [
+    "3D 角色",
+    "数字同事",
+    "毛绒材质",
+    "工作流",
+    "帮助入口"
+  ],
+  "path": "entries/2026/2026-10-29-Nyuman",
+  "cover": "entries/2026/2026-10-29-Nyuman/01.png"
+},
   {
     product: "heypcb",
     scene: "开发工具",
